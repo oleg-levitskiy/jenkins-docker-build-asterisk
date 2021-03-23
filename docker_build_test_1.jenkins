@@ -15,9 +15,18 @@ stages {
         stage("docker login") {
             steps {
                 echo " ============== docker login =================="
-      }
-    }
+                  }
+         }
+     stage("docker build") {
+            steps {
+                echo " ============== docker build =================="
+                dir ('./') {
+                	sh 'docker build -t telworks/toolbox:latest . '
+                }
+                  }
+         
+         }
 }     
-    }
+   }
      
     
