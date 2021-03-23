@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 MAINTAINER telworks <oleg.itsm@gmail.com>
-ENV build_date 2019-11-21
+ENV build_date 2021-03-23
 
 RUN apt-get update
 WORKDIR /tmp/
@@ -43,11 +43,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --
     wget\
     git
 
-RUN curl -vsL http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-17-current.tar.gz | tar --strip-components 1 -xz
-RUN pwd
-RUN ls -al
+RUN curl -vsL http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz | tar --strip-components 1 -xz
 
-RUN ls
 RUN ./configure --with-jansson-bundled  --libdir=/usr/lib64 #1> /dev/null
 # Remove the native build option
 RUN make menuselect.makeopts
