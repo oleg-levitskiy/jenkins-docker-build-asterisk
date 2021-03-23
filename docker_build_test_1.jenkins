@@ -15,6 +15,11 @@ stages {
         stage("docker login") {
             steps {
                 echo " ============== docker login =================="
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_telworks', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh """
+                    docker login -u $USERNAME -p $PASSWORD
+                    """
+                }
                   }
          }
      stage("docker build") {
