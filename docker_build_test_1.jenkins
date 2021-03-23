@@ -21,7 +21,7 @@ stages {
             steps {
                 echo " ============== docker build =================="
                 dir ('./') {
-                	sh 'docker build -t telworks/toolbox:latest . '
+                	sh 'docker build -t telworks/aster-16-jenkinsbuild:latest . '
                 }
                   }
          
