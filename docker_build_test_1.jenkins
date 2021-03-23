@@ -26,7 +26,7 @@ pipeline {
             steps {
                      echo " ============== docker build =================="
                      dir ('./') {
-                	sh 'docker build -t telworks/aster-17-jenbuild:latest . '
+                	sh 'docker build -t telworks/asterisk-18-jenbuild:latest . '
                 }
                   }         
          }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                      echo " ============== start pushing image =================="
                 sh '''
-                docker push telworks/aster-17-jenbuild:latest
+                docker push telworks/asterisk-18-jenbuild:latest
                 '''
                   }
          
