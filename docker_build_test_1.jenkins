@@ -6,12 +6,12 @@ pipeline {
     agent { 
         label 'node-114'
         }
-triggers { pollSCM('* * * * *') }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-        timestamps()
+    triggers { pollSCM('* * * * *') }
+            options {
+                    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+            timestamps()
     }
-stages {
+    stages {
         stage("docker login") {
             steps {
                 echo " ============== docker login =================="
