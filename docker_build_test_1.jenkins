@@ -14,26 +14,25 @@ pipeline {
     stages {
         stage("docker login") {
             steps {
-                echo " ============== docker login =================="
-                withCredentials([usernamePassword(credentialsId: 'dockerhub_telworks', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh """
-                    docker login -u $USERNAME -p $PASSWORD
-                    """
+                      echo " ============== docker login =================="
+                      withCredentials([usernamePassword(credentialsId: 'dockerhub_telworks', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                      sh """
+                     docker login -u $USERNAME -p $PASSWORD
+                     """
                 }
                   }
          }
      stage("docker build") {
             steps {
-                echo " ============== docker build =================="
-                dir ('./') {
+                     echo " ============== docker build =================="
+                     dir ('./') {
                 	sh 'docker build -t telworks/aster-17-jenbuild:latest . '
                 }
-                  }
-         
+                  }         
          }
     stage("docker publish") {
             steps {
-                echo " ============== start pushing image =================="
+                     echo " ============== start pushing image =================="
                 sh '''
                 docker push telworks/aster-17-jenbuild:latest
                 '''
