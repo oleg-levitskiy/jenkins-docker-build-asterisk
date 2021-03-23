@@ -31,6 +31,15 @@ stages {
                   }
          
          }
+    stage("docker publish") {
+            steps {
+                echo " ============== start pushing image =================="
+                sh '''
+                docker push telworks/aster-17-jenbuild:latest
+                '''
+                  }
+         
+         }
 }     
    }
      
